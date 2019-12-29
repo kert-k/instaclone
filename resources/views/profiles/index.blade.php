@@ -13,10 +13,13 @@
                 <div class="pr-3"><h1>{{$user->username}}</h1></div>
                 <div><a href="/post/create" class="btn btn-primary">Create post</a></div>
             </div>
+
+            <div><a href="/profile/{{ $user->id }}/edit" class="">Edit profile</a></div>
+            
             <div class="d-flex pb-3">
-                <div class="pr-5"><strong>100</strong> posts</div>
-                <div class="pr-5"><strong>222</strong> followers</div>
-                <div class="pr-5"><strong>123</strong> following</div>
+                <div class="pr-5"><strong>{{ count($user->posts) }}</strong> posts</div>
+                <div class="pr-5"><strong>999</strong> followers</div>
+                <div class="pr-5"><strong>888</strong> following</div>
             </div>
 
             <div><strong>{{$user->profile->title}}</strong></div>
@@ -31,16 +34,18 @@
         </div>
     </div>
 
+
+
     <div class="row ">
-        <div class="col-4">
-            <img src="https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg" class="w-100 h-100">
-        </div>
-        <div class="col-4">
-            <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="w-100 h-100">
-        </div>
-        <div class="col-4">
-            <img src="https://images.unsplash.com/photo-1500622944204-b135684e99fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" class="w-100 h-100">
-        </div>
+        @foreach ($user->posts as $post)
+
+            <div class="col-4 pb-4">
+                <a href="/post/{{ $post->id }}">
+                    <img src="/storage/{{ $post->image }}" class="w-100">
+                </a>
+            </div>
+
+        @endforeach
     </div>
 </div>
 @endsection
