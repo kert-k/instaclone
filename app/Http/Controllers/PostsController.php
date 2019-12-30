@@ -14,6 +14,8 @@ class PostsController extends Controller
 
     public function create()
     {
+        $this->authorize('update', auth()->user()->profile);
+
         return view('posts.create');
     }
 
