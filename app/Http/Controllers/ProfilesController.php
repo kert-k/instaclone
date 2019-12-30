@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Profile;
 
 class ProfilesController extends Controller
 {
@@ -26,7 +27,7 @@ class ProfilesController extends Controller
             'image' => ''
         ]);
         
-        \App\Profile::where('user_id', auth()->user()->id)->update($data);
+        Profile::where('user_id', auth()->user()->id)->update($data);
 
         return redirect('/profile/'.auth()->user()->id);
     }
