@@ -10,9 +10,23 @@
 
       <div class="col-4">
         <div>
-          <h3>{{ $post->user->username }}</h3>
-          <a href="/post/{{ $post->id }}/edit">Edit post</a>
-          <p>{{ $post->caption }}</p>
+          <div class="d-flex align-items-center">
+            <div class="div">
+              <img src="{{ $post->user->profile->image() }}" class="w-100 rounded-circle" style="max-width: 40px;">
+            </div>
+
+            <div class="pl-3">
+              <div class="font-weight-bold">
+                <a class="text-dark" href="/profile/{{ $post->user->id }}">
+                  <span class="font-weight-bold">{{ $post->user->username }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          
+          <p><a class="text-dark" href="/profile/{{ $post->user->id }}"><span class="font-weight-bold">{{ $post->user->username }}</span></a> {{ $post->caption }}</p>
         </div>
       </div>
     </div>

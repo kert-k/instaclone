@@ -5,15 +5,18 @@
     <div class="row">
 
         <div class="col-3 p-5">
-            <img height="150" src="https://scontent-hel2-1.cdninstagram.com/v/t51.2885-19/s320x320/74375710_3171904429701998_7240736187227308032_n.jpg?_nc_ht=scontent-hel2-1.cdninstagram.com&_nc_ohc=EgaFsNNOUpQAX_5D4oP&oh=7cb4b48f3c592b6252e6931e11a6724d&oe=5E95E64C" class="rounded-circle">
+            <img height="150" src="{{$user->profile->image()}}" class="rounded-circle w-100">
         </div>
 
         <div class="col-6">
-            <div class="d-flex pt-5 justify-content-between">
-                <div class="pr-3"><h1>{{$user->username}}</h1></div>
+            <div class="d-flex pt-5 pb-3 justify-content-between ">
+                <div class="pr-3 d-flex align-items-center">
+                    <div class="h4">{{ $user->username }}</div>
+                    <follow-button user-id="{{ $user->id }}"/>
+                </div>
                 
                 @can('update', $user->profile)
-                    <div><a href="/post/create" class="btn btn-primary">Create post</a></div>
+                    <div><a href="/post/create" class="">Create post</a></div>
                 @endcan
 
             </div>

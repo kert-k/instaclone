@@ -12,4 +12,15 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function image()
+    {
+
+        return $this->image ? ('/storage/' . $this->image) : '/storage/no_image.svg.png';
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
