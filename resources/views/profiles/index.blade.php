@@ -12,7 +12,9 @@
             <div class="d-flex pt-5 pb-3 justify-content-between ">
                 <div class="pr-3 d-flex align-items-center">
                     <div class="h4">{{ $user->username }}</div>
-                    <follow-button user-id="{{ $user->id }}"/>
+                    {{-- @if (Auth::user()) --}}
+                        <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"/>
+                    {{-- @endif --}}
                 </div>
                 
                 @can('update', $user->profile)
@@ -27,8 +29,8 @@
             
             <div class="d-flex pb-3">
                 <div class="pr-5"><strong>{{ count($user->posts) }}</strong> posts</div>
-                <div class="pr-5"><strong>999</strong> followers</div>
-                <div class="pr-5"><strong>888</strong> following</div>
+                <div class="pr-5"><strong>{{ $user->profile->followers->count() }}</strong> followers</div>
+                <div class="pr-5"><strong>{{ $user->following->count() }}</strong> following</div>
             </div>
 
             <div><strong>{{$user->profile->title}}</strong></div>
@@ -37,7 +39,7 @@
             
             @if ($user->profile->url)
 
-                <div><strong><a href="{{$user->profile->url}}">{{$user->profile->url}}</a></strong></div>
+                <div><strong><a href="{{$user->profile->url}}" target="__blank">{{$user->profile->url}}</a></strong></div>
             
             @endif
         </div>
