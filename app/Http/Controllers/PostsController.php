@@ -18,7 +18,7 @@ class PostsController extends Controller
         $users = auth()->user()->following->pluck('user_id');
 
         // alternative orderBy('created_at', 'DESC') === latest()
-        $posts = Post::whereIn('user_id', $users)->orderBy('created_at', 'DESC')->get();
+        $posts = Post::whereIn('user_id', $users)->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         return view('posts.index', compact('posts'));
     }

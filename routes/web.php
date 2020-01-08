@@ -13,6 +13,10 @@
 
 Route::get('/', 'PostsController@index');
 
+Route::get('/mail', function () {
+  return new App\Mail\welcomeEmail;
+});
+
 Auth::routes();
 
 Route::get('/home', 'ProfilesController@index')->name('home');
