@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PostsController@index');
+Route::get('/home', 'PostsController@index');
+Route::get('/discover', 'ProfilesController@list');
 
 Route::get('/mail', function () {
   return new App\Mail\welcomeEmail;
@@ -19,7 +21,7 @@ Route::get('/mail', function () {
 
 Auth::routes();
 
-Route::get('/home', 'ProfilesController@index')->name('home');
+// Route::get('/home', 'ProfilesController@index')->name('home');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profiles.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profiles.edit');

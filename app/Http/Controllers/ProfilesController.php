@@ -55,4 +55,11 @@ class ProfilesController extends Controller
 
         return redirect('/profile/'.auth()->user()->id);
     }
+
+    public function list()
+    {
+        $profiles = Profile::simplepaginate(10);
+
+        return view('profiles.list', compact('profiles'));
+    }
 }
