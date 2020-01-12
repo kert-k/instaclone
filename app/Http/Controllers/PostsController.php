@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use Intervention\Image\Facades\Image;
 use App\Post;
+use App\Profile;
 
 class PostsController extends Controller
 {
@@ -16,11 +17,12 @@ class PostsController extends Controller
     public function index()
     {
         $users = auth()->user()->following->pluck('user_id');
+        $profiles = Profile::all();
 
         // alternative orderBy('created_at', 'DESC') === latest()
         $posts = Post::whereIn('user_id', $users)->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'profiles'));
     }
 
     public function create()

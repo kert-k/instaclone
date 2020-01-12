@@ -8,7 +8,7 @@
       @foreach ($posts as $post)
 
       <div class="row justify-content-end">
-        <div class="col-sm-8">
+        <div class="">
   
           <div class="card mb-5">
             
