@@ -46,7 +46,7 @@ class PostsController extends Controller
                 'image',
                 function ($attribute, $value, $fail) {
                     if ($this->detectHumanFace(request('image'))) {
-                        $fail('Image must not contain a human.');
+                        $fail('Image contains a human. Please remove humans from the image');
                     }
                 }
                 ]

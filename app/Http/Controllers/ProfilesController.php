@@ -58,7 +58,8 @@ class ProfilesController extends Controller
 
     public function list()
     {
-        $profiles = Profile::simplepaginate(10);
+        $followingIds = auth()->user()->following()->pluck('id');
+        $profiles = Profile::whereNotIn('user_id', $followingIds)->simplePaginate(10);
 
         return view('profiles.list', compact('profiles'));
     }
