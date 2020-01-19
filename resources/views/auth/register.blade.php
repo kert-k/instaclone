@@ -82,6 +82,21 @@
                                 </button>
                             </div>
                         </div>
+
+                        <hr>
+                        <div class="d-flex justify-content-center my-2">
+                            OR
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="container-fluid">
+                                <a href="{{ url('/login/facebook') }}" class="btn btn-primary btn-block">
+                                    <span class="fa fa-facebook"></span>
+                                    Continue with Facebook
+                                </a>
+                            </div>
+                        </div>
+                        
                     </form>
                 </div>
             </div>

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'password',
+        'name', 'email', 'username', 'password', 'provider', 'provider_id','avatar'
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable
 
         static::created(function ($user) {
             $user->profile()->create([
-                'title' => $user->username
+                'title' => $user->username,
             ]);
 
             Mail::to($user->email)->send(new welcomeEmail($user));
